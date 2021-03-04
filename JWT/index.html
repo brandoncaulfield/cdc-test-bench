@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script
+      type="text/javascript"
+      src="https://cdns.gigya.com/js/gigya.js?apiKey=3_MFDpIqjG2ScGhCo5RydwON-kAwhH9rZaNcmB1IXc_MvR3mEYQGqQroIrxzo9s2sy"
+    ></script>
+    <title>CDC Test Bench - JWT</title>
+
+    <script src="app.js"></script>
+  </head>
+  <body>
+    <h1>CDC Test Bench - JWT</h1>
+    <div>
+      <button id="logoutButton" onclick="onLogoutClick()" style="display: none;">Logout</button>
+      
+    </div>
+    <h2 id="loggedIn" style="display: none;">Logged In</h2>
+    <h2 id="loggedOut">Logged Out</h2>
+    <div id="login"></div>
+    <div>
+      <button onclick="getJWT()">Get JWT</button>
+      <textarea id="JWT" rows="25" cols="100" width="100%" style="display: block;">
+      </textarea>
+    </div>
+  </body>
+</html>
