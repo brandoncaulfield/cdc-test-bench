@@ -47,40 +47,7 @@ gigya.accounts.showScreenSet({
   containerID: "login",
 });
 
-/**
- * lite registration flow - changing uid
- */
-// const performTestLiteReg = () => {
-//   gigya.accounts.initRegistration({
-//     isLite: true,
-//     callback: (data) => {
-//         gigya.accounts.register({
-//             regToken: data.regToken,
-//             profile: {'email':'brandon.test3@sap.com'},
-//             callback: (data2) => {
-//                 gigya.socialize.getLiteToken({
-//                     email: 'brandon.test3@sap.com',
-//                     siteUID: 000000001234,
-//                     callback: (data3) => {
-//                         console.log(data3)
-//                     }
-//                 })
-//             }
-//         })
-//     },
-//   });
-// };
 
-/**
- * Show lite account registration screen-set
- */
-gigya.accounts.showScreenSet({
-  screenSet: "Default-LiteRegistration",
-  containerID: "lite-registration",
-  callback: (data) => {
-
-  },
-});
 
 /**
  *
@@ -108,13 +75,6 @@ const myFunction = (data) => {
   debugger;
 };
 
-/**
- *
- */
-gigya.accounts.showScreenSet({
-  screenSet: "Default-RegistrationLogin",
-  containerID: "login",
-});
 
 /**
  *
