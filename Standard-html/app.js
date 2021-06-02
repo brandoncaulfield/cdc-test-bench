@@ -47,6 +47,13 @@ gigya.accounts.showScreenSet({
   containerID: "login",
 });
 
+/**
+ * 
+ */
+// gigya.accounts.showScreenSet({
+//   screenSet: "Default-LiteRegistration",
+//   containerID: "lite-accounts",
+// });
 
 
 /**

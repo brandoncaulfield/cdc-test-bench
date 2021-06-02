@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script src="https://www.google.com/recaptcha/api.js?render=6LcIrPEaAAAAAOq5q9-3_uUfCSYRt5lWVYmFo-Nn"></script>
+    <script>
+      function onClick() {
+        debugger;
+        e = window.event
+        e.preventDefault();
+        grecaptcha.ready(function () {
+          grecaptcha
+            .execute("6LcIrPEaAAAAAOq5q9-3_uUfCSYRt5lWVYmFo-Nn", {
+              action: "submit",
+            })
+            .then(function (token) {
+              console.log(token);
+            });
+        });
+      }
+    </script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>reCAPTCHA Test</h1>
+    <button type="submit" onclick="onClick()">reCAPTCHA</button>
+  </body>
+</html>
