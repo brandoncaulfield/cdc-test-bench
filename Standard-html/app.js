@@ -48,12 +48,12 @@ gigya.accounts.showScreenSet({
 });
 
 /**
- * 
+ * Show lite account registration screen-set
  */
-// gigya.accounts.showScreenSet({
-//   screenSet: "Default-LiteRegistration",
-//   containerID: "lite-accounts",
-// });
+gigya.accounts.showScreenSet({
+  screenSet: "Default-LiteRegistration",
+  containerID: "lite-accounts",
+});
 
 
 /**

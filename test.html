@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Email Verification</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <script src="/shared-static/scripts/angular.1.1.5.js"></script>
+</head>
+<body class="login-body" id="login-app-body">
+<label id="user"></label>
+<input type="text" id="gigya-textbox-code">
+<button onclick="updateOtp()">submit</button>
+<div id="container"></div>
+<script type="text/javascript" src="https://cdns.gigya.com/js/gigya.js?apiKey=3_I87iVDWzhXuPPYHgAjLaHsMtX3rzwJX0KiI9cYNKtvmaRhrqstMfYjhCIobH-FQp"></script>
+<script>
+//    var params={
+//        screenSet : 'Thermofisher-two-step-login-RegistrationLogin',
+//        startScreen : 'gigya-email-code-verification-screen',
+//        containerID: "container",
+//        lang: 'en'
+//    };
+    // function call to gigya to show the screen set.
+//    gigya.accounts.showScreenSet(params);
+    function getCookie(name) {
+        var re = new RegExp(name + "=([^;]+)");
+        var value = re.exec(document.cookie);
+        var c = (value != null) ? unescape(value[1]) : '';
+        return c;
+    };
+    var vToken,
+        email = localStorage.getItem('emailToVerify');
+    document.getElementById('user').innerHTML = email;
+    function sendOtp() {
+        var params = {
+            apiKey:'3_I87iVDWzhXuPPYHgAjLaHsMtX3rzwJX0KiI9cYNKtvmaRhrqstMfYjhCIobH-FQp',
+            lang: getCookie("CK_LANG_CODE"),
+            email: email,
+            format: 'jsonp',
+            callback: getVToken
+        };
+        gigya.accounts.otp.sendCode(params);
+    }
+    function getVToken(response) {
+        if(response.errorCode == 0) {
+            vToken = response.vToken;
+        }
+    }
+    //The unique identifier of the user whose login information is being updated.
+    // Use this parameter only when calling the method server-side, when there is no active SAP Customer Data Cloud session.
+    //We need user session to update the code
+    function updateOtp() {
+        var params = {
+            apiKey:'3_I87iVDWzhXuPPYHgAjLaHsMtX3rzwJX0KiI9cYNKtvmaRhrqstMfYjhCIobH-FQp',
+            lang: getCookie("CK_LANG_CODE"),
+            vToken: vToken,
+            code:document.getElementById('gigya-textbox-code').value
+        };
+        gigya.accounts.otp.update(params);
+    }
+    function editEmail() {
+        window.location.href='/account-center/missing-email.html';
+    }
+    sendOtp();
+</script>
+</body>
+</html>
